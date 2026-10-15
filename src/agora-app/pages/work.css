@@ -7,24 +7,32 @@
 .ag-work {
   position: relative;
   height: calc(100dvh - var(--ag-bar-h));
-  display: grid;
-  grid-template-columns: minmax(330px, 410px) 1fr;
+  overflow: hidden;
 }
 
+/* The rail floats over a full-bleed map, as a glass sheet. */
 .ag-work-rail {
-  position: relative;
+  position: absolute;
   z-index: 2;
+  top: 14px;
+  left: 14px;
+  bottom: 14px;
+  width: min(410px, 42vw);
   overflow: auto;
   overscroll-behavior: contain;
   padding: 22px 20px 40px;
-  background: rgba(247, 241, 231, 0.94);
-  border-right: 1px solid var(--ag-line);
+  border-radius: 26px;
+  background: rgba(247, 241, 231, 0.9);
+  -webkit-backdrop-filter: saturate(160%) blur(22px);
+  backdrop-filter: saturate(160%) blur(22px);
+  border: 1px solid var(--ag-line);
+  box-shadow: 0 20px 50px -26px rgba(40, 20, 6, 0.55);
   scrollbar-width: thin;
 }
 
 .ag-work-map {
-  position: relative;
-  min-height: 0;
+  position: absolute;
+  inset: 0;
   background: #e9ddc4;
 }
 
@@ -86,7 +94,7 @@
 
 .ag-map-legend {
   position: absolute;
-  left: 16px;
+  left: calc(min(410px, 42vw) + 30px);
   bottom: 14px;
   z-index: 3;
   max-width: min(520px, calc(100% - 200px));
@@ -372,6 +380,7 @@
   position: sticky;
   bottom: -40px;
   margin: 16px -20px -40px;
+  border-radius: 0 0 26px 26px;
   padding: 12px 20px 16px;
   display: flex;
   align-items: center;
@@ -404,13 +413,13 @@
   }
 
   .ag-work-rail {
+    inset: 0;
+    width: auto;
     padding-top: 64px;
     border: 0;
-  }
-
-  .ag-work-map {
-    position: absolute;
-    inset: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--ag-bg);
   }
 
   .view-list .ag-work-map {
@@ -418,8 +427,9 @@
   }
 
   .view-map .ag-work-rail {
-    position: absolute;
+    top: auto;
     inset: auto 0 0;
+    background: rgba(247, 241, 231, 0.94);
     max-height: 46%;
     border-radius: 24px 24px 0 0;
     box-shadow: 0 -12px 30px -16px rgba(23, 18, 15, 0.45);
