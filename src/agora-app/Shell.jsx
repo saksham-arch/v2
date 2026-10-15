@@ -30,7 +30,8 @@ export default function Shell({ route, full = false, dark = false, children }) {
           {TABS.map((t) => (
             <a key={t.id} href={t.href} aria-current={t.match(route) ? 'page' : undefined}>
               <Icon name={t.icon} size={18} />
-              {say(t.en, t.hi)}
+              <span className="ag-tab-full">{say(t.en, t.hi)}</span>
+              <span className="ag-tab-short">{say(t.short, t.shortHi)}</span>
             </a>
           ))}
         </nav>

@@ -122,7 +122,7 @@
 
 .sc-pair {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
   gap: 22px;
 }
 
@@ -194,7 +194,7 @@
 
 .sc-trades {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(108px, 100%), 1fr));
   gap: 10px;
 }
 
@@ -350,7 +350,7 @@
 
 .sc-weighs {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
   gap: 18px;
 }
 
@@ -586,7 +586,7 @@
 }
 
 .sc-page .sc-terms {
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(160px, 100%), 1fr));
 }
 
 .sc-page .ag-term {
@@ -614,7 +614,7 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
   gap: 10px;
 }
 

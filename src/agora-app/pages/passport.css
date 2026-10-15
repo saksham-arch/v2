@@ -151,7 +151,7 @@
 
 .pp-builder {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+  grid-template-columns: minmax(0, 1fr) minmax(min(260px, 100%), 340px);
   gap: 22px;
   align-items: start;
 }
@@ -231,7 +231,7 @@
 }
 
 .pp-trade-tiles {
-  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(132px, 100%), 1fr));
 }
 
 .pp-trade-tiles .ag-tile {
@@ -395,7 +395,7 @@
 /* Evidence */
 .pp-photos {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr));
   gap: 12px;
 }
 
@@ -511,7 +511,7 @@
 /* The finished card */
 .pp-final {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
   gap: 12px;
 }
 
@@ -577,7 +577,7 @@
 
 .pp-owed-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
   gap: 16px;
 }
 

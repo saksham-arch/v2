@@ -69,6 +69,7 @@ export default function Icon({ name, size, className = '', title }) {
       viewBox="0 0 24 24"
       width={size}
       height={size}
+      style={size ? { width: size, height: size } : undefined}
       fill="none"
       stroke="currentColor"
       strokeWidth="1.7"

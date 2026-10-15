@@ -395,7 +395,7 @@
 }
 
 .ag-fact span {
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -450,10 +450,13 @@
 }
 
 .ag-job-actions-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-  grid-auto-flow: column;
+  display: flex;
   gap: 8px;
+}
+
+.ag-job-actions-row > * {
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .ag-icon-btn {
@@ -465,7 +468,7 @@
   border: 0;
   border-radius: 18px;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 650;
   color: var(--ag-ink);
   background: rgba(255, 252, 246, 0.72);
@@ -545,7 +548,7 @@
 }
 
 .ag-place-card small {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--ag-ink-2);
 }
 

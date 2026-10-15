@@ -1062,7 +1062,7 @@ span.slab {
 }
 
 .record-stats dt {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--ink-3);
 }
 
@@ -1080,7 +1080,7 @@ span.slab {
 }
 
 .record-meta {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--ink-3);
   margin-top: 8px;
 }
@@ -1176,7 +1176,7 @@ span.slab {
 }
 
 .offer dt {
-  font-size: 11px;
+  font-size: 12px;
   color: rgba(243, 234, 219, 0.55);
 }
 
@@ -1382,7 +1382,7 @@ span.slab {
   right: 46px;
   font-family: var(--font);
   font-style: normal;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   white-space: nowrap;
   color: var(--cream);
@@ -1481,7 +1481,7 @@ span.slab {
 }
 
 .drawer-kicker {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1878,7 +1878,7 @@ span.slab {
   gap: 5px;
   padding: 4px 0;
   color: rgba(243, 234, 219, 0.6);
-  font-size: 11px;
+  font-size: 12.5px;
   transition: color 0.25s;
 }
 
@@ -1912,7 +1912,7 @@ span.slab {
   display: flex;
   flex-direction: column;
   gap: 7px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: rgba(243, 234, 219, 0.6);
 }
@@ -2071,7 +2071,7 @@ span.slab {
 }
 
 .hint {
-  font-size: 12px;
+  font-size: 13px;
   color: rgba(243, 234, 219, 0.5);
 }
 
@@ -2269,7 +2269,7 @@ span.slab {
 
 .tool .schemes .need,
 .tool .schemes .where {
-  font-size: 12px;
+  font-size: 13px;
   color: rgba(243, 234, 219, 0.55);
 }
 
@@ -2427,7 +2427,7 @@ span.slab {
   padding: 4px 9px;
   border-radius: 8px;
   font-style: normal;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   white-space: nowrap;
   color: var(--slip);
@@ -2445,7 +2445,7 @@ span.slab {
 
 .fn-hint {
   padding: 0 12px 0 6px;
-  font-size: 12px;
+  font-size: 13px;
   color: rgba(243, 234, 219, 0.55);
   white-space: nowrap;
 }

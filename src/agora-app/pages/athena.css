@@ -42,7 +42,7 @@
 /* ---------- Schemes ---------- */
 .ath-schemes {
   display: grid;
-  grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(min(300px, 100%), 0.8fr) minmax(0, 1.2fr);
   gap: 20px;
   align-items: start;
 }
@@ -208,7 +208,7 @@
 
 .ath-owed {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
   gap: 12px;
 }
 
@@ -323,7 +323,7 @@
 
 .ath-calls {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(230px, 100%), 1fr));
   gap: 12px;
 }
 
