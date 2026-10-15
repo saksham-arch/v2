@@ -1,3 +1,4 @@
+import { JOBS } from '../src/hermes/jobs.js'
 import assert from 'node:assert/strict'
 const saved=new Map()
 globalThis.localStorage={getItem:k=>saved.get(k)??null,setItem:(k,v)=>saved.set(k,v),removeItem:k=>saved.delete(k)}
@@ -13,7 +14,7 @@ assert.throws(()=>publishJob({...draft,fairWorkAccepted:false}),/fair-work commi
 const job=publishJob(draft)
 assert.equal(job.fairWorkCommitment.version,1)
 assert.ok(Number.isFinite(job.fairWorkCommitment.acceptedAt))
-assert.equal(allJobs().length,161)
+assert.equal(allJobs().length,JOBS.length+1)
 jobStore.set(s=>({...s,selected:job.id,origin:job.lngLat}))
 assert.equal(jobStore.getSnapshot().data.selected,job.id)
 assert.ok(selectJobs(jobStore.getSnapshot().data).some(j=>j.id===job.id))

@@ -1,11 +1,8 @@
 import { allJobs } from './marketplace.js'
 import { DEMO_DATE, DEMO_ORIGIN, JOBS, TRADES } from '../hermes/jobs.js'
 import { createLocalStore, isObject } from './storage.js'
-export function distanceKm([a,b],[c,d]) {
-  const rad = Math.PI / 180
-  const h = Math.sin((d-b)*rad/2)**2 + Math.cos(b*rad)*Math.cos(d*rad)*Math.sin((c-a)*rad/2)**2
-  return 6371 * 2 * Math.asin(Math.sqrt(Math.min(1,h)))
-}
+import { distanceKm } from './geo.js'
+export { distanceKm }
 export function matchesDate(job, filter, reference = DEMO_DATE) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(job.startDate) || job.startDate < reference) return false
   if (filter === 'day') return job.startDate === reference

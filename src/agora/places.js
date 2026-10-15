@@ -1,3 +1,4 @@
+import { NAKAS } from '../hermes/nakas.js'
 // Published addresses are the source of truth; coordinates are approximate area pins.
 // Directions deliberately resolve the address, not the approximate coordinates.
 const labour='https://labour.maharashtra.gov.in/en/contact-us'
@@ -11,18 +12,14 @@ const REAL_PLACES=[
  {id:'welfare',kind:'rights',name:'Maharashtra Labour Welfare Board',hi:'महाराष्ट्र कामगार कल्याण मंडल',category:'Worker support',area:'Prabhadevi',lngLat:[72.8347,19.0148],address:'Hutatma Babu Genu, Mumbai Girni Kamgar Krida Bhavan, 615 Senapati Bapat Marg, Prabhadevi, Mumbai 400013',description:'State worker welfare board. Find the board’s official contact details and ask about the services applicable to you.',source:labour},
 ].map((p,i)=>({...p,key:p.id,copy:i,height:3.5}))
 
-const DEMO_TYPES=[
- ['work','Private work meeting point','निजी काम मिलने का स्थान','Private work'],
- ['craft','Government work desk','सरकारी काम केंद्र','Government work'],
- ['trust','Labour court','श्रम न्यायालय','Court'],
- ['rights','Labour support office','श्रम सहायता कार्यालय','Labour support'],
-]
-const DEMO_PLACES=DEMO_TYPES.flatMap(([kind,name,hi,category],type)=>Array.from({length:8},(_,i)=>{
- const angle=(type+i*4)*Math.PI/8,radius=.009+i*.004
- return {id:`demo-${kind}-${i}`,kind,key:`demo-${kind}-${i}`,copy:i,height:3.5,demo:true,
- name:`${name} ${i+1}`,hi:`${hi} ${i+1}`,category,area:'Andheri',
- lngLat:[72.86542+Math.cos(angle)*radius,19.11161+Math.sin(angle)*radius],
- address:`${['Market Square','Station Road','Workshop Lane','Garden Junction','East Arcade','Canal Road','Central Square','Depot Lane'][i]} · Andheri`,
- description:{work:'Meet nearby employers and explore private work opportunities.',craft:'Explore public maintenance and government project work.',trust:'A place to seek guidance on workplace disputes and unpaid wages.',rights:'Find support with worker rights, registration and welfare schemes.'}[kind],source:null}
-}))
-export const PLACES=[...REAL_PLACES,...DEMO_PLACES]
+// Hiring points (Hermes) come from the naka catalogue. A few help desks are
+// illustrative: they show the kind of place a worker would go, not an address.
+const NAKA_PLACES=NAKAS.map(n=>({id:n.id,kind:'work',naka:n.id,demo:true,name:n.name,hi:n.hi,category:'Labour naka · hiring point',area:n.name,lngLat:n.lngLat,address:`${n.name}, Andheri East · illustrative hiring point`,description:n.note,descriptionHi:n.noteHi,source:null}))
+const HELP_PLACES=[
+ {id:'csc-marol',kind:'craft',name:'Common Service Centre',hi:'कॉमन सर्विस सेंटर',category:'Registration help',area:'Marol',lngLat:[72.8771,19.1121],address:'Marol village road · illustrative CSC desk',description:'Common Service Centres help with e-Shram registration, scheme forms and printing a card. Ask your nearest centre what it can do and what it charges.',descriptionHi:'कॉमन सर्विस सेंटर ई-श्रम पंजीकरण, योजना फ़ॉर्म और कार्ड प्रिंट करने में मदद करते हैं। नज़दीकी केंद्र से पूछें कि वे क्या करते हैं और कितना लेते हैं।'},
+ {id:'csc-gundavali',kind:'craft',name:'Common Service Centre',hi:'कॉमन सर्विस सेंटर',category:'Registration help',area:'Gundavali',lngLat:[72.8552,19.1152],address:'Near Gundavali metro · illustrative CSC desk',description:'Assisted enrolment for workers without a smartphone. Carry the documents your scheme asks for.',descriptionHi:'बिना स्मार्टफ़ोन वाले कामगारों के लिए सहायक पंजीकरण। योजना के माँगे गए काग़ज़ साथ रखें।'},
+ {id:'skill-desk',kind:'craft',name:'Skill training desk',hi:'कौशल प्रशिक्षण केंद्र',category:'Training and certificates',area:'MIDC',lngLat:[72.8728,19.1214],address:'MIDC Central Road · illustrative training desk',description:'Short courses and recognition of prior learning can turn years of practice into a certificate. Ask about free or subsidised batches.',descriptionHi:'छोटे कोर्स और पूर्व अनुभव की मान्यता से सालों का अनुभव प्रमाणपत्र बन सकता है। मुफ़्त या सस्ते बैच के बारे में पूछें।'},
+ {id:'legal-aid',kind:'trust',name:'Free legal aid clinic',hi:'मुफ़्त कानूनी सहायता केंद्र',category:'Legal help',area:'Andheri East',lngLat:[72.8588,19.1176],address:'Near the court lane · illustrative legal aid clinic',description:'Legal services authorities offer free legal advice to eligible people, including many unorganised workers. Ask about a lawyer for an unpaid-wage dispute.',descriptionHi:'विधिक सेवा प्राधिकरण पात्र लोगों को मुफ़्त कानूनी सलाह देते हैं, जिनमें कई असंगठित कामगार शामिल हैं। बकाया मज़दूरी के विवाद के लिए वकील के बारे में पूछें।'},
+ {id:'worker-desk',kind:'rights',name:'Worker facilitation desk',hi:'कामगार सहायता केंद्र',category:'Worker support',area:'Saki Naka',lngLat:[72.8842,19.1061],address:'Saki Naka junction · illustrative help desk',description:'A place to ask about welfare-board registration, renewals and claims in your language.',descriptionHi:'कल्याण बोर्ड पंजीकरण, नवीनीकरण और दावों के बारे में अपनी भाषा में पूछने की जगह।'},
+].map(p=>({...p,demo:true,source:null}))
+export const PLACES=[...REAL_PLACES,...[...NAKA_PLACES,...HELP_PLACES].map((p,i)=>({...p,key:p.id,copy:i,height:3.5}))]
