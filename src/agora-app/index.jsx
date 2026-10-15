@@ -27,9 +27,8 @@ function Page({ route }) {
 
 export default function AgoraApp({ route }) {
   const full = route === '#map'
-  const dark = route.startsWith('#naka/')
   return (
-    <Shell route={route} full={full} dark={dark}>
+    <Shell route={route} full={full}>
       <SceneBoundary fallback={<div className="ag-tablet" style={{ margin: 40 }}><p>Something went wrong on this page. <button className="ag-link" onClick={() => location.reload()}>Reload</button></p></div>}>
         <Suspense fallback={<div className="ag-loading" aria-busy="true"><span className="ag-coin slip lg" /></div>}>
           <Page route={route} key={route.split('/')[0]} />

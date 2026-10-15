@@ -1,93 +1,334 @@
-/* Black glaze, fired clay and readable gold. All overrides belong to this board. */
-.naka-page {
-  --ag-ink: #fff4e3;
-  --ag-ink-2: #f1dfc8;
-  --ag-ink-3: #d4bfa9;
-  --ag-tablet: #2a201a;
-  --ag-line: #72543a;
-  --ag-line-2: #9b7852;
-  --ag-clay-deep: #e8b06a;
-  color: #fff4e3;
-  background: linear-gradient(140deg, #17120f, #2a201a);
-  box-shadow: 0 0 0 100vmax #17120f;
-  clip-path: inset(0 -100vmax);
-  padding-bottom: 32px;
+/* A naka board: big, plain, glass over cream, readable across a pavement. */
+.nk-page {
+  padding-top: 26px;
+  font-size: 17px;
+}
+
+.nk-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: clamp(20px, 4vw, 48px);
+  align-items: center;
+}
+
+.nk-title {
+  margin: 10px 0 18px;
+  font-size: clamp(44px, 6vw, 80px);
+  font-weight: 740;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.nk-pills,
+.nk-amenities,
+.nk-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nk-pills span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-size: 17px;
+  font-weight: 650;
+  background: rgba(255, 252, 246, 0.7);
+  border: 1px solid rgba(23, 18, 15, 0.08);
+}
+
+.nk-pills svg {
+  width: 22px;
+  height: 22px;
+  color: var(--ag-clay-deep);
+}
+
+.nk-amenities {
+  margin-top: 14px;
+}
+
+.nk-amenities span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ag-ink-3);
+  opacity: 0.55;
+  text-decoration: line-through;
+}
+
+.nk-amenities span.on {
+  opacity: 1;
+  color: var(--ag-good);
+  text-decoration: none;
+}
+
+.nk-amenities svg {
+  width: 20px;
+  height: 20px;
+}
+
+.nk-actions {
+  margin-top: 24px;
+  align-items: center;
+}
+
+.nk-actions .ag-btn {
+  min-height: 56px;
+  padding: 0 26px;
   font-size: 18px;
 }
-.naka-page .ag-title { overflow-wrap: anywhere; line-height: 1.1; }
-.naka-page .ag-title em { color: #e8b06a; }
-.naka-page .ag-kicker { color: #e8b06a; }
-.naka-page .ag-muted, .naka-page .ag-list-row small { color: #d4bfa9; }
-.naka-page .ag-lede { color: #f1dfc8; }
-.naka-hindi { font-size: clamp(26px, 3vw, 40px); margin-bottom: 22px; }
-.naka-peak, .naka-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.naka-wait { margin: 18px 0; }
-.naka-wait b { display: block; font-size: clamp(52px, 7vw, 84px); line-height: 1.1; color: #e8b06a; font-variant-numeric: tabular-nums; }
-.naka-amenities { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 22px; }
-.naka-amenities li { display: flex; gap: 10px; align-items: center; padding: 12px; border: 1px solid #72543a; border-radius: 14px; }
-.naka-amenities small { display: block; color: #d4bfa9; }
-.naka-amenities svg { flex-shrink: 0; color: #e8b06a; }
-.naka-page .ag-hero-actions { align-items: center; }
-.naka-page .ag-btn, .naka-page .listen { min-height: 52px; font-size: 17px; }
-.naka-page .ag-btn-primary { background: #e8b06a; color: #17120f; }
-.naka-page .ag-btn-tinted, .naka-page .listen { background: #493426; color: #fff4e3; border: 1px solid #9b7852; }
-.naka-page .ag-btn-plain { color: #ffe0ad; border: 1px solid #9b7852; }
-.naka-checkin { padding: 16px 0; color: #f1dfc8; }
-.naka-board, .naka-safety, .naka-others { margin-top: 36px; }
-.naka-page .ag-h { font-size: clamp(24px, 2.7vw, 32px); line-height: 1.35; }
-.naka-board > .ag-muted { margin-top: 12px; }
-.naka-filters { margin: 20px 0 12px; }
-.naka-segments { display: flex; flex-wrap: wrap; border: 1px solid #9b7852; padding: 5px; gap: 5px; border-radius: 18px; }
-.naka-segments button { min-height: 52px; padding: 10px 16px; border: 0; border-radius: 12px; color: #fff4e3; background: transparent; font: inherit; cursor: pointer; }
-.naka-segments button[aria-pressed='true'] { background: #e8b06a; color: #17120f; }
-.naka-filters .ag-switch { justify-content: flex-start; gap: 20px; padding: 8px 0; }
-.naka-page .ag-switch input { background: #80664f; }
-.naka-page .ag-switch input:checked { background: #527e5b; }
-.naka-job-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 18px; }
-.naka-job.ag-tablet + .naka-job.ag-tablet { margin-top: 0; }
-.naka-job { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; min-width: 0; border-top: 4px solid #c66b43; }
-.naka-job > .ag-split { width: 100%; }
-.naka-trade { background: #fff4e3; color: var(--trade); font-size: 32px; border: 3px solid var(--trade); }
-.naka-pay { color: #e8b06a; font-size: clamp(44px, 5vw, 68px); font-weight: 750; line-height: 1.1; letter-spacing: -.04em; overflow-wrap: anywhere; }
-.naka-pay small { display: block; font-size: 20px; font-weight: 500; letter-spacing: 0; color: #f1dfc8; margin-top: 5px; }
-.naka-page .ag-seal { white-space: normal; }
-.naka-page .ag-seal.good { color: #c6e6c9; background: #243c2b; }
-.naka-page .ag-seal.mid { color: #ffe0ad; background: #493617; }
-.naka-page .ag-seal.bad { color: #ffd0c4; background: #572b22; }
-.naka-details { width: 100%; margin-top: auto; }
-.naka-empty { padding: 28px 0; }
-.naka-safety .ag-tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 18px; }
-.naka-safety .ag-tile { color: #fff4e3; font-size: 18px; min-height: 180px; text-decoration: none; gap: 16px; }
-.naka-safety svg { color: #e8b06a; }
-.naka-others .ag-list { margin-top: 18px; }
-.naka-page :is(a, button, input):focus-visible { outline: 3px solid #ffe0ad; outline-offset: 4px; }
-.naka-poster { display: none; }
-@media (max-width: 700px) {
-  .naka-job-grid { grid-template-columns: 1fr; }
-  .naka-safety .ag-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .naka-board > .ag-split { flex-wrap: wrap; }
-  .naka-page .ag-hero .ag-niche { order: 0; }
+
+.nk-actions .ag-btn[aria-pressed='true'] {
+  background: linear-gradient(180deg, #4f7f63, var(--ag-good));
 }
-@media (prefers-reduced-motion: reduce) {
-  .naka-page *, .naka-page *::before, .naka-page *::after { animation: none !important; transition: none !important; }
+
+.nk-round {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 0;
+  border-radius: 50%;
+  color: var(--ag-ink);
+  background: rgba(255, 252, 246, 0.8);
+  box-shadow: 0 6px 16px -10px rgba(40, 20, 6, 0.5);
 }
+
+.nk-round[aria-pressed='true'] {
+  color: var(--cream);
+  background: var(--ag-ink);
+}
+
+.nk-round svg {
+  width: 26px;
+  height: 26px;
+}
+
+.nk-niche {
+  height: clamp(340px, 40vw, 520px);
+}
+
+.nk-board {
+  margin-top: 46px;
+}
+
+.nk-board-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.nk-board-head h2 {
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 720;
+  letter-spacing: -0.035em;
+}
+
+.nk-trades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 16px;
+  background: rgba(23, 18, 15, 0.07);
+}
+
+.nk-trades button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 42px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 620;
+  color: var(--ag-ink);
+  background: transparent;
+}
+
+.nk-trades button i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--c);
+}
+
+.nk-trades button[aria-pressed='true'] {
+  background: var(--ag-tablet);
+  box-shadow: 0 2px 8px -4px rgba(40, 20, 6, 0.4);
+}
+
+.nk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.nk-card {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-top: 5px solid var(--c);
+  border-radius: 24px;
+  text-align: left;
+  color: var(--ag-ink);
+  background: rgba(255, 252, 246, 0.7);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 16px 36px -26px rgba(40, 20, 6, 0.6);
+  transition: transform 0.2s var(--ease), box-shadow 0.2s;
+}
+
+.nk-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 44px -26px rgba(40, 20, 6, 0.7);
+}
+
+.nk-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nk-glyph {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--c);
+}
+
+.nk-pay {
+  font-size: 40px;
+  font-weight: 780;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.nk-pay small {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ag-ink-2);
+  margin-left: 3px;
+}
+
+.nk-card strong {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.nk-when {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  color: var(--ag-ink-2);
+}
+
+.nk-when svg {
+  width: 20px;
+  height: 20px;
+  color: var(--ag-clay-deep);
+}
+
+.nk-safety {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 40px;
+}
+
+.nk-safety > div {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding: 22px 16px;
+  border-radius: 24px;
+  text-align: center;
+  background: rgba(255, 252, 246, 0.6);
+}
+
+.nk-safety b {
+  font-size: 17px;
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+.nk-others {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 34px;
+}
+
+.nk-other {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 620;
+  text-decoration: none;
+  color: var(--ag-ink);
+  background: rgba(255, 252, 246, 0.7);
+  border: 1px solid rgba(23, 18, 15, 0.08);
+}
+
+.nk-other svg {
+  color: var(--ag-clay-deep);
+}
+
+.nk-foot {
+  margin-top: 22px;
+  font-size: 14px;
+  color: var(--ag-ink-3);
+}
+
+@media (max-width: 860px) {
+  .nk-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .nk-niche {
+    order: -1;
+    height: 300px;
+  }
+
+  .nk-safety {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media print {
-  @page { size: A4; margin: 12mm; }
-  html, body, .ag, .ag-main { background: white !important; color: black !important; }
-  .ag-main { padding: 0 !important; max-width: none; }
-  .naka-page { background: white; color: black; box-shadow: none; clip-path: none; padding: 0; }
-  .naka-page .ag-no-print, .naka-page .ag-meander, .naka-page .ag-hero .ag-niche, .naka-amenities, .naka-wait, .naka-peak, .naka-page .ag-hero .ag-lede { display: none !important; }
-  .naka-page .ag-hero { display: block; padding: 0 0 16px; }
-  .naka-page .ag-title { font-size: 54px; margin: 10px 0; }
-  .naka-hindi { font-size: 30px; margin-bottom: 0; }
-  .naka-poster { display: block; }
-  .naka-poster > p { margin: 12px 0; font-size: 12px; }
-  .naka-page :is(.ag-title em, .ag-kicker, .ag-muted, .naka-pay, .naka-pay small, .ag-seal) { color: black !important; }
-  .naka-poster .naka-job-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .naka-poster .naka-job { background: white !important; border: 1px solid black; color: black; padding: 14px; gap: 10px; border-radius: 0; box-shadow: none; break-inside: avoid; }
-  .naka-poster .naka-pay { font-size: 44px; }
-  .naka-poster .ag-h { font-size: 21px; }
-  .naka-poster .naka-meta { font-size: 15px; }
-  .naka-poster .ag-seal { background: white; border: 1px solid black; font-size: 14px; }
-  .naka-poster .ag-coin, .naka-poster .ag-seal i { background: white; color: black; border: 1px solid black; box-shadow: none; }
+  .nk-niche,
+  .nk-safety svg {
+    display: none !important;
+  }
+
+  .nk-card {
+    border: 2px solid #000;
+    break-inside: avoid;
+  }
+
+  .nk-title {
+    font-size: 64px;
+  }
 }
