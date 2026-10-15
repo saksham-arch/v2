@@ -885,3 +885,27 @@ html.pp-locked body {
   outline: 4px solid #f2c27a;
   outline-offset: 4px;
 }
+
+/* Roomier, even padding. */
+.pp-page { padding-top: 24px; padding-bottom: 64px; }
+.pp-page .ag-tablet { padding: clamp(22px, 3.4vw, 36px) !important; }
+.pp-page .pp-aside { padding: 20px; }
+.pp-page .ag-list-row.pp-day { padding: 14px 18px; }
+.pp-page > * + * { margin-top: 22px; }
+@media (max-width: 640px) {
+  .pp-page .ag-tablet { padding: 18px !important; }
+}
+
+/* Work diary spacing. */
+.pp-stats { gap: 14px; }
+.pp-stats .ag-stat { padding: 18px 20px; }
+.pp-owed-grid { gap: 14px; }
+.pp-page .pp-owed { padding: 20px; }
+.pp-status { gap: 8px; }
+.pp-status-btn { padding: 10px 14px; }
+.pp-page .ag-list-row.pp-day { gap: 16px; padding: 16px 20px !important; }
+.pp-page .ag-list { padding: 6px; }
+.ag-niche.pp-shelf-niche { margin: 8px 0 22px; }
+@media (max-width: 640px) {
+  .pp-page .ag-list-row.pp-day { gap: 10px; padding: 14px !important; }
+}

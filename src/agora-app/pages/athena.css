@@ -390,3 +390,25 @@
     height: auto;
   }
 }
+
+/* Dark fills always carry light text. */
+.ath-page .ag-btn-dark,
+.ath-page .ag-btn-dark *,
+.ath-page .ag-btn-primary,
+.ath-page .ag-btn-primary *,
+.ath-page .ag-chip[aria-pressed='true'],
+.ath-page .ath-docs button[aria-pressed='true'] {
+  color: #fff8ee !important;
+}
+.ath-page .ag-seg button,
+.ath-page .ath-work button,
+.ath-page .ath-step,
+.ath-page .ath-call,
+.ath-page .ath-round {
+  color: var(--ag-ink) !important;
+  background-color: rgba(255, 252, 246, 0.78);
+}
+.ath-page .ag-seg button[aria-pressed='true'],
+.ath-page .ag-seg button[aria-selected='true'] {
+  background: #fffdf8 !important;
+}
