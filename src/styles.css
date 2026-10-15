@@ -2497,3 +2497,44 @@ span.slab {
   opacity: 0.78;
   pointer-events: none;
 }
+
+/* ---------- Morning fog behind copy on the hill ----------
+   A soft bank of mist sits behind the headings and the hero so the words
+   read over the painted clay and sky without hiding the scene. */
+.hero-copy,
+.title-block,
+.summit,
+.scroll-hint {
+  isolation: isolate;
+}
+
+.hero-copy::before,
+.title-block::before,
+.summit::before,
+.scroll-hint::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -38px -56px;
+  border-radius: 56px;
+  pointer-events: none;
+  background: radial-gradient(closest-side, rgba(247, 240, 228, 0.7) 0%, rgba(247, 240, 228, 0.48) 58%, rgba(247, 240, 228, 0) 100%);
+  -webkit-backdrop-filter: blur(7px) saturate(1.08);
+  backdrop-filter: blur(7px) saturate(1.08);
+  -webkit-mask-image: radial-gradient(closest-side, #000 52%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 52%, transparent 100%);
+}
+
+.summit::before {
+  inset: -44px -90px;
+}
+
+.scroll-hint::before {
+  inset: -10px -30px;
+}
+
+@media (max-width: 759px) {
+  .hero-copy::before {
+    inset: -18px -26px;
+  }
+}
