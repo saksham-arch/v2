@@ -36,6 +36,7 @@ import Tablet from './exhibits/Tablet.jsx'
 import Offerings from './exhibits/Offerings.jsx'
 import Exodus from './exhibits/Exodus.jsx'
 import { useGalleryEnv } from './exhibits/useGalleryEnv.js'
+import { spotTexture } from './frieze.js'
 
 const TAU = Math.PI * 2
 const N = FIGURES.length
@@ -237,7 +238,7 @@ function Vase() {
       uniforms.uReveal.value[i] = smooth(at, at + 0.035, p)
     }
     uniforms.uHover.value = hall.hover
-    uniforms.uSel.value = hall.selected
+    uniforms.uSel.value = hall.selected >= 0 ? hall.selected : hall.picked
     const ch = T.chapters
     const glow = uniforms.uGlow.value
     glow.lerp(
@@ -271,8 +272,9 @@ function Vase() {
       if (d.idle > 2.4 && p < T.coda[0]) d.offset += (Math.round(d.offset / TAU) * TAU - d.offset) * (1 - Math.exp(-dt * 2.2))
     }
     let target = base + d.offset
-    if (hall.selected >= 0) {
-      const [a, b] = hall.ranges[hall.selected]
+    const facing = hall.selected >= 0 ? hall.selected : hall.picked
+    if (facing >= 0) {
+      const [a, b] = hall.ranges[facing]
       target += wrap(-((a + b) / 2) * TAU - target)
     }
     if (!d.on) target += Math.sin(t * 0.35) * 0.04
@@ -281,8 +283,15 @@ function Vase() {
 
   const handleRot = (896 / 4096) * TAU - Math.PI / 2
   const spots = useRef([])
+  const spotMode = useRef(null)
   useFrame((s) => {
     if (!hall.ranges) return
+    // Each chapter paints its own icon into the spots: what a touch will do.
+    if (spotMode.current !== hall.mode) {
+      spotMode.current = hall.mode
+      const map = spotTexture(hall.mode)
+      for (const m of spots.current) if (m) { m.material.map = map; m.material.needsUpdate = true }
+    }
     const t = s.clock.elapsedTime
     // Only once the frieze is painted, and not over the figure already open.
     const on = hall.p > T.kept[1] - 0.02
@@ -293,10 +302,10 @@ function Vase() {
       const r = rAtY(1.84) + 0.03
       m.position.set(Math.sin(phi) * r, 1.84, Math.cos(phi) * r)
       m.lookAt(Math.sin(phi) * 10, 1.84, Math.cos(phi) * 10)
-      const k = i === hall.hover ? 1.6 : 1
-      m.scale.setScalar((0.055 + Math.sin(t * 2.4 + i) * 0.012) * k)
+      const k = i === hall.hover ? 1.5 : i === hall.picked ? 1.3 : 1
+      m.scale.setScalar((0.085 + Math.sin(t * 2.4 + i) * 0.008) * k)
       m.visible = on && hall.selected !== i
-      m.material.opacity = 0.55 + Math.sin(t * 2.4 + i) * 0.25
+      m.material.opacity = 0.82 + Math.sin(t * 2.4 + i) * 0.14
     })
   })
 
@@ -304,8 +313,8 @@ function Vase() {
     <group ref={group}>
       {FIGURES.map((f, i) => (
         <mesh key={f.id} ref={(el) => (spots.current[i] = el)} onClick={e=>{if(!isTap(e.delta,hall.drag.moved))return;e.stopPropagation();hall.onSelect?.(i)}} visible={false} renderOrder={7}>
-          <ringGeometry args={[0.55, 1, 40]} />
-          <meshBasicMaterial color="#ffd08a" transparent opacity={0.6} depthWrite={false} blending={AdditiveBlending} toneMapped={false} />
+          <circleGeometry args={[1, 40]} />
+          <meshBasicMaterial color="#ffffff" transparent opacity={0.85} depthWrite={false} toneMapped={false} />
         </mesh>
       ))}
       <mesh

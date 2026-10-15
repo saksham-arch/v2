@@ -41,6 +41,8 @@ export const hall = {
   drag: { on: false, x: 0, moved: 0, vel: 0, offset: 0, idle: 0 },
   hover: -1,
   selected: -1,
+  picked: -1, // a figure used as a chapter control (see frieze.js)
+  mode: 'record', // what touching a figure means right now
   reveal: new Array(FIGURES.length).fill(0),
   onSelect: null, // set by the DOM: (index | -1) => void
   grab: false, // a 3D exhibit owns the current drag

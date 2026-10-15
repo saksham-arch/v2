@@ -18,6 +18,7 @@ import { CardTool, JobsTool, OfferTool, Record, RightsTool } from './tools.jsx'
 import { agora } from '../agora/state.js'
 import Listen from '../ui/Listen.jsx'
 import { throwOne } from './exhibits/Offerings.jsx'
+import { FULL_TOOL, HINTS, actionLabel, figureAction, modeFor } from './frieze.js'
 
 const NUMERALS = ['Α', 'Β', 'Γ', 'Δ']
 
@@ -84,12 +85,21 @@ export default function VaseHall() {
   const [chapter, setChapter] = useState(-1)
   const [hover, setHover] = useState(-1)
   const [selected, setSelected] = useState(-1)
+  // Inside a chapter the frieze figures drive that chapter's tool instead.
+  const [picked, setPicked] = useState(null)
+  const mode = modeFor(chapter)
   const recordOpener=useRef(null)
   useEffect(()=>{if(selected>=0){recordOpener.current=document.activeElement;requestAnimationFrame(()=>stage.current?.querySelector('.drawer-close')?.focus({preventScroll:true}))}else if(recordOpener.current?.isConnected){recordOpener.current.focus({preventScroll:true});recordOpener.current=null}},[selected])
 
   useEffect(() => {
     hall.onHover = setHover
     hall.onSelect = (i) => {
+      if (i >= 0 && hall.mode && hall.mode !== 'record') {
+        const message = figureAction(hall.mode, FIGURES[i].id)
+        hall.picked = i
+        setPicked({ i, mode: hall.mode, message })
+        return
+      }
       hall.selected = i
       setSelected(i)
     }
@@ -101,7 +111,10 @@ export default function VaseHall() {
   // Clear a selection when the reader moves to another chapter.
   useEffect(() => {
     hall.selected = -1
+    hall.picked = -1
+    hall.mode = modeFor(chapter)
     setSelected(-1)
+    setPicked(null)
   }, [chapter])
 
   useEffect(() => {
@@ -206,7 +219,8 @@ export default function VaseHall() {
   // Browse the frieze one figure at a time.
   const stepFigure = (dir) => {
     const n = FIGURES.length
-    const i = selected < 0 ? (dir > 0 ? 0 : n - 1) : (selected + dir + n) % n
+    const at = mode === 'record' ? selected : picked?.i ?? -1
+    const i = at < 0 ? (dir > 0 ? 0 : n - 1) : (at + dir + n) % n
     hall.onSelect?.(i)
   }
   useEffect(() => {
@@ -323,8 +337,8 @@ export default function VaseHall() {
             <button
               key={f.id}
               type="button"
-              className={`fn-fig ${selected === i ? 'on' : ''}`}
-              onClick={() => hall.onSelect?.(selected === i ? -1 : i)}
+              className={`fn-fig ${(mode === 'record' ? selected : picked?.i) === i ? 'on' : ''}`}
+              onClick={() => hall.onSelect?.(mode === 'record' && selected === i ? -1 : i)}
               onPointerEnter={() => {
                 hall.hover = i
                 setHover(i)
@@ -333,8 +347,8 @@ export default function VaseHall() {
                 hall.hover = -1
                 setHover(-1)
               }}
-              aria-label={`${f.trade}: open record`}
-              aria-pressed={selected === i}
+              aria-label={actionLabel(mode, f)[lang === 'hi' ? 1 : 0]}
+              aria-pressed={(mode === 'record' ? selected : picked?.i) === i}
             >
               <span className="fn-disc" style={{ backgroundImage: `url(${f.src})` }} />
               <em>{f.trade}</em>
@@ -343,14 +357,23 @@ export default function VaseHall() {
           <button type="button" className="fn-step" onClick={() => stepFigure(1)} aria-label="Next figure">
             ›
           </button>
-          <span className="fn-hint">Drag the vase to turn it · ← → to browse</span>
+          <span className={`fn-hint mode-${mode}`}>{HINTS[mode][lang === 'hi' ? 1 : 0]} · ← →</span>
         </nav>
+
+        {picked && picked.message && (
+          <div className={`fn-result mode-${picked.mode}`} role="status">
+            <span className="fn-result-disc" style={{ backgroundImage: `url(${FIGURES[picked.i].src})` }} aria-hidden="true" />
+            <p>{picked.message[lang === 'hi' ? 1 : 0]}</p>
+            <a href={FULL_TOOL[picked.mode]} className="btn btn-clay btn-sm">{lang === 'hi' ? 'पूरा साधन खोलें' : 'Open the full tool'} →</a>
+            <button type="button" className="fn-result-close" onClick={() => { hall.picked = -1; setPicked(null) }} aria-label={lang === 'hi' ? 'बंद करें' : 'Dismiss'}>×</button>
+          </div>
+        )}
 
         <div className={`tip ${hf && !sel ? 'show' : ''}`} ref={tip} aria-hidden="true">
           {hf && (
             <>
               <span className="tip-greek">{hf.greek}</span>
-              <span className="tip-trade">{hf.trade}</span>
+              <span className="tip-trade">{mode === 'record' ? hf.trade : actionLabel(mode, hf)[lang === 'hi' ? 1 : 0]}</span>
               <span className="tip-hi" lang="hi">{hf.hi}</span>
             </>
           )}
