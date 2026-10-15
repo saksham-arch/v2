@@ -141,10 +141,23 @@ export default function VaseHall() {
         setActive(on)
       }
       document.documentElement.classList.toggle('in-hall', r.top < 40 && r.bottom > 40)
-      if (!on) return
+      if (!on) {
+        for (const f of fades) {
+          if (f.last === 0) continue
+          f.last = 0
+          f.el.style.opacity = 0
+          f.el.style.setProperty('--in', 0)
+          f.el.style.visibility = 'hidden'
+          f.el.classList.remove('live', 'expanded')
+          f.el.inert = true
+        }
+        return
+      }
 
       for (const f of fades) {
-        const editing=f.el.contains(document.activeElement) && document.activeElement.matches('input, textarea, select')
+        const target = span(p, f.a, f.b)
+        if (target <= 0 && f.el.contains(document.activeElement)) document.activeElement.blur()
+        const editing = target > 0 && f.el.contains(document.activeElement) && document.activeElement.matches('input, textarea, select')
         const a = sec.current.classList.contains('static-hall') || f.el.classList.contains('expanded') || editing ? 1 : Math.round(span(p, f.a, f.b) * 1000) / 1000
         f.el.inert = a <= 0.5
         if (a === f.last) continue

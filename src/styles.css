@@ -2622,9 +2622,9 @@ span.slab {
   width: min(470px, 40vw);
   padding: 26px 26px 28px;
   border-radius: 28px;
-  background: linear-gradient(180deg, rgba(20, 14, 11, 0.74), rgba(12, 9, 7, 0.82));
-  -webkit-backdrop-filter: blur(18px) saturate(1.15) brightness(0.85);
-  backdrop-filter: blur(18px) saturate(1.15) brightness(0.85);
+  background: rgba(20, 14, 11, 0.22);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  backdrop-filter: blur(10px) saturate(1.1);
   border: 1px solid rgba(232, 176, 106, 0.2);
   box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 236, 210, 0.06);
   color: #f6ecdc;
@@ -2656,43 +2656,23 @@ span.slab {
     width: auto;
     padding: 18px 18px 20px;
     border-radius: 24px;
-    background: linear-gradient(180deg, rgba(20, 14, 11, 0.8), rgba(12, 9, 7, 0.88));
-    -webkit-backdrop-filter: blur(22px) saturate(1.15) brightness(0.8);
-    backdrop-filter: blur(22px) saturate(1.15) brightness(0.8);
+    background: rgba(20, 14, 11, 0.3);
+    -webkit-backdrop-filter: blur(12px) saturate(1.1);
+    backdrop-filter: blur(12px) saturate(1.1);
   }
 }
 
-/* Chapter cards: clearer, lighter glass with a slight blur; children stay inside. */
-.hall-gl { opacity: 0.68; }
-.hall .panel {
-  box-sizing: border-box;
-  max-height: calc(100vh - 120px);
-  max-height: calc(100dvh - 120px);
-  overflow-x: hidden;
-  overflow-y: auto;
-  background: rgba(14, 10, 8, 0.38);
-  -webkit-backdrop-filter: blur(8px) saturate(1.1);
-  backdrop-filter: blur(8px) saturate(1.1);
-  border: 1px solid rgba(246, 236, 220, 0.16);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-}
-.hall .panel > *,
-.hall .panel * { max-width: 100%; min-width: 0; box-sizing: border-box; }
-.hall .panel img,
-.hall .panel canvas,
-.hall .panel svg { max-width: 100%; height: auto; }
-.hall .panel input,
-.hall .panel select,
-.hall .panel textarea { width: 100%; }
-.hall .panel .ag-btn,
-.hall .panel button { white-space: normal; }
+/* Themis' offer tool in the vase: even padding, contained options. */
+.hall .panel .tool { box-sizing: border-box; width: 100%; padding: 20px; gap: 16px; overflow: hidden; }
+.hall .panel .tool * { min-width: 0; box-sizing: border-box; max-width: 100%; }
+.hall .panel .tool .form-grid { gap: 14px 14px; }
+.hall .panel .tool .field { gap: 8px; }
+.hall .panel .tool input,
+.hall .panel .tool select { width: 100%; padding: 0 14px; }
+.hall .panel .tool .seg { flex-wrap: wrap; gap: 4px; padding: 4px; }
+.hall .panel .tool .seg button { padding: 8px 12px; white-space: normal; }
+.hall .panel .tool .presets { gap: 8px 14px; padding: 2px 0; }
+.hall .panel .tool .weights { padding: 6px 0; }
 @media (max-width: 860px) {
-  .hall .panel,
-  .hall .panel.left,
-  .hall .panel.right {
-    background: rgba(14, 10, 8, 0.46);
-    -webkit-backdrop-filter: blur(10px) saturate(1.1);
-    backdrop-filter: blur(10px) saturate(1.1);
-    max-height: calc(100dvh - 96px);
-  }
+  .hall .panel .tool { padding: 16px; gap: 14px; }
 }
