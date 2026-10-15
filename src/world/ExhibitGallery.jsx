@@ -38,6 +38,7 @@ export default function ExhibitGallery() {
  </SceneBoundary><span className="exhibit-turn">{hi?'खींचकर घुमाएँ':'Drag to turn'} ↔</span>
  </div>
  <div className="exhibit-copy"><p className="exhibit-god">{hi?item.hi:item.name} · {['Α','Β','Γ','Δ'][index]}</p><h3>{hi?item.objectHi:item.object}</h3><p>{hi?item.bodyHi:item.body}</p>
+ <a className="btn btn-clay btn-sm exhibit-open" href={['#map','#passport','#scales','#athena'][index]}>{hi?['काम खोजें','काम पासपोर्ट खोलें','प्रस्ताव जाँचें','हक़ और मदद'][index]:['Find work','Open your work passport','Check an offer','Rights & help'][index]} →</a>
  <p className="exhibit-caption">{hi?'काँसा · संगमरमर · काँच':'BRONZE · MARBLE · GLASS'}</p></div>
  </div>
 

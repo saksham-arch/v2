@@ -301,6 +301,7 @@ export default function VaseHall() {
               <span className="panel-god">· kept by {c.god}</span>
             </p>
             <h2 className="panel-title">{lang==='hi'?c.hi:c.title}</h2>
+            <a className="link full-tool" href={FULL_TOOL[['work','craft','trust','rights'][i]]}>{lang==='hi'?['पूरा नक़्शा और नाके','पूरा काम पासपोर्ट','पूरा तराज़ू','अधिकार केंद्र'][i]:['Open the full map and nakas','Open your full work passport','Open the full scales','Open the rights desk'][i]} →</a>
             <button className="link expand-tool" aria-expanded={expanded===i} onClick={()=>setExpanded(expanded===i?-1:i)}>{expanded===i?(lang==='hi'?'वापस फूलदान पर':'Return to the vase'):(lang==='hi'?'साधन बड़ा करें':'Expand this tool')}</button>
             <p className="panel-hi" lang="hi">{c.hi}</p>
             <p className="panel-body">{c.body}</p>

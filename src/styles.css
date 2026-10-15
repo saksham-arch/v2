@@ -2603,3 +2603,14 @@ span.slab {
 @keyframes fn-rise {
   from { opacity: 0; transform: translateY(12px); }
 }
+
+.panel .full-tool {
+  display: inline-block;
+  margin-right: 14px;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.exhibit-open {
+  margin: 18px 0 6px;
+}
