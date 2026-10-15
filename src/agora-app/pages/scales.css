@@ -1,0 +1,678 @@
+/* Γ · Themis — the scales page. Big type, icon-first fields and glass
+   surfaces over the cream slip; the 3D balance does the showing. */
+
+.sc-page {
+  --sc-glass: rgba(251, 247, 240, 0.62);
+  --sc-glass-edge: rgba(255, 255, 255, 0.55);
+  font-size: 17px;
+  color: #17120f;
+}
+
+/* Glass tablets, like the site's bars. */
+.sc-page .ag-tablet {
+  padding: clamp(22px, 3vw, 32px);
+  background: var(--sc-glass);
+  border: 1px solid var(--sc-glass-edge);
+  -webkit-backdrop-filter: saturate(160%) blur(20px);
+  backdrop-filter: saturate(160%) blur(20px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), var(--ag-shadow);
+}
+
+.sc-page .ag-grid > .ag-tablet + .ag-tablet {
+  margin-top: 0;
+}
+
+.sc-page .listen {
+  height: auto;
+  min-height: 50px;
+  font-size: 17px;
+}
+
+.sc-page .ag-btn {
+  min-height: 52px;
+  font-size: 17px;
+}
+
+.sc-page .ag-chip {
+  min-height: 48px;
+  padding: 0 18px;
+  font-size: 16.5px;
+  color: #17120f;
+  background: rgba(255, 252, 246, 0.7);
+}
+
+.sc-page .ag-chip[aria-pressed='true'] {
+  color: #fff8ee;
+  background: #17120f;
+}
+
+.sc-page .ag-chip .dot {
+  background: var(--c, var(--ag-clay));
+}
+
+.sc-page [aria-invalid='true'] {
+  border-color: var(--ag-bad);
+}
+
+.sc-small {
+  font-size: 15px;
+  color: var(--ag-ink-2);
+}
+
+.sc-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sc-panel-title {
+  margin-bottom: 18px;
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.2vw, 38px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  scroll-margin-top: calc(var(--ag-bar-h) + 84px);
+}
+
+.sc-panel-title:focus {
+  outline: none;
+}
+
+/* ---------- Icon-labelled fields ---------- */
+
+.sc-page .sc-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 680;
+  color: #17120f;
+}
+
+.sc-page .sc-label svg {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  color: var(--ag-clay-deep);
+}
+
+.sc-fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.sc-fieldset legend {
+  padding: 0;
+  margin-bottom: 12px;
+}
+
+.sc-field {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+
+.sc-field-error {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ag-bad);
+}
+
+.sc-pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 22px;
+}
+
+.sc-page .sc-big {
+  min-height: 62px;
+  font-size: 26px;
+  font-weight: 680;
+  letter-spacing: -0.02em;
+  color: #17120f;
+  background: rgba(255, 253, 249, 0.85);
+}
+
+.sc-money {
+  position: relative;
+}
+
+.sc-money > span {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  translate: 0 -50%;
+  font-size: 24px;
+  font-weight: 650;
+  color: var(--ag-ink-3);
+  pointer-events: none;
+}
+
+.sc-page .sc-money .sc-big {
+  padding-left: 44px;
+}
+
+.sc-stepper {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr) 62px;
+  gap: 8px;
+}
+
+.sc-page .sc-stepper .ag-btn {
+  min-height: 62px;
+  padding: 0;
+}
+
+.sc-stepper .ag-btn svg {
+  width: 26px;
+  height: 26px;
+}
+
+.sc-page .sc-stepper .sc-big {
+  text-align: center;
+}
+
+.sc-unknown {
+  min-height: 48px;
+  font-size: 17px;
+  color: var(--ag-ink-2);
+}
+
+.sc-seg-lg {
+  background: rgba(23, 18, 15, 0.08);
+}
+
+.sc-seg-lg button {
+  min-height: 52px;
+  font-size: 17px;
+  color: #17120f;
+}
+
+/* ---------- Trade tiles ---------- */
+
+.sc-trades {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
+  gap: 10px;
+}
+
+.sc-trade {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 8px;
+  min-height: 104px;
+  padding: 12px 6px;
+  border-radius: 20px;
+  border: 1px solid var(--ag-line);
+  background: rgba(255, 252, 246, 0.72);
+  font-size: 15px;
+  font-weight: 640;
+  line-height: 1.2;
+  text-align: center;
+  color: #17120f;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s, border-color 0.2s;
+}
+
+.sc-trade:hover {
+  transform: translateY(-1px);
+}
+
+.sc-trade[aria-pressed='true'] {
+  border-color: var(--c);
+  background: rgba(255, 253, 249, 0.95);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 34%, transparent), var(--ag-shadow);
+}
+
+.sc-trade[aria-pressed='true']::after {
+  content: '✓';
+  position: absolute;
+  top: 8px;
+  right: 9px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  color: #fff;
+  background: var(--c);
+}
+
+.sc-trade-glyph {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  color: #fff;
+  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--c) 60%, white), var(--c) 65%);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35);
+}
+
+/* ---------- The listing this what-if came from ---------- */
+
+.sc-page .sc-source {
+  border-left: 6px solid var(--c);
+}
+
+.sc-source > * + * {
+  margin-top: 12px;
+}
+
+.sc-source-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+}
+
+.sc-source-pay {
+  font-size: 34px;
+  font-weight: 720;
+  letter-spacing: -0.04em;
+}
+
+.sc-source-pay small {
+  font-size: 17px;
+  font-weight: 560;
+  letter-spacing: 0;
+  color: var(--ag-ink-2);
+}
+
+/* ---------- The verdict ---------- */
+
+.sc-verdict,
+.sc-scan,
+.sc-mini {
+  --tone: var(--ag-ink-3);
+}
+
+.sc-page .sc-verdict,
+.sc-page .sc-scan {
+  border-top: 6px solid var(--tone);
+}
+
+.sc-verdict:focus {
+  outline: none;
+}
+
+.sc-page .tone-good { --tone: var(--ag-good); }
+.sc-page .tone-mid { --tone: var(--ag-mid); }
+.sc-page .tone-bad { --tone: var(--ag-bad); }
+.sc-page .tone-invalid,
+.sc-page .tone-none { --tone: var(--ag-ink-3); }
+
+.sc-verdict-head,
+.sc-scan-head {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* A wax-seal medallion in the verdict's colour. */
+.sc-medal {
+  flex: none;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font: 600 44px/1 var(--serif);
+  color: #fff;
+  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--tone) 55%, white), var(--tone) 60%, color-mix(in srgb, var(--tone) 70%, black));
+  box-shadow:
+    inset 0 0 0 4px rgba(255, 255, 255, 0.24),
+    inset 0 0 0 7px color-mix(in srgb, var(--tone) 75%, black),
+    0 12px 26px -12px color-mix(in srgb, var(--tone) 80%, black);
+  outline: 2px dashed color-mix(in srgb, var(--tone) 45%, transparent);
+  outline-offset: 4px;
+}
+
+.sc-medal.sm {
+  width: 72px;
+  height: 72px;
+  font-size: 34px;
+}
+
+.sc-verdict-word {
+  display: block;
+  font-family: var(--serif);
+  font-size: clamp(32px, 3.4vw, 44px);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--tone);
+}
+
+.sc-weighs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 18px;
+}
+
+.sc-weigh-h {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #17120f;
+}
+
+.sc-weigh-h::before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f6d49b, var(--ag-gold));
+  box-shadow: 0 0 0 1.5px #b58b52;
+}
+
+.sc-weigh-h.bad::before {
+  background: radial-gradient(circle at 35% 30%, #c4574a, var(--ag-bad));
+  box-shadow: 0 0 0 1.5px var(--ag-gold);
+}
+
+.sc-page .ag-flag {
+  grid-template-columns: 34px 1fr;
+  align-items: center;
+  padding: 12px 14px;
+  background: rgba(255, 252, 246, 0.6);
+}
+
+.sc-page .ag-flag.hard {
+  background: rgba(143, 42, 28, 0.09);
+}
+
+.sc-page .ag-flag-icon {
+  border-radius: 50%;
+}
+
+.sc-page .ag-flag strong {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.38;
+  color: #17120f;
+}
+
+.sc-honest {
+  padding-left: 14px;
+  border-left: 3px solid var(--ag-bronze);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ag-ink-2);
+}
+
+/* On phones the verdict sits below the form; a pill keeps it in sight. */
+.sc-mini {
+  display: none;
+}
+
+@media (max-width: 980px) {
+  .sc-mini {
+    position: sticky;
+    bottom: calc(14px + var(--ag-safe-b));
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 60px;
+    padding: 6px 20px 6px 8px;
+    border: 0;
+    border-radius: 999px;
+    color: var(--cream);
+    background: rgba(23, 18, 15, 0.9);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 14px 30px -14px rgba(0, 0, 0, 0.7);
+    text-align: left;
+  }
+
+  .sc-mini-mark {
+    flex: none;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font: 600 23px/1 var(--serif);
+    color: #fff;
+    background: var(--tone);
+    box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.25);
+  }
+
+  .sc-mini strong {
+    flex: 1;
+    font-size: 18px;
+    font-weight: 650;
+  }
+
+  .sc-mini-why {
+    font-size: 20px;
+    color: var(--ag-gold);
+  }
+}
+
+@media (max-width: 860px) {
+  .sc-mini {
+    bottom: calc(var(--ag-tab-h) + var(--ag-safe-b) + 12px);
+  }
+}
+
+/* ---------- Benchmark gauge ---------- */
+
+.sc-bench {
+  display: grid;
+  gap: 10px;
+}
+
+.sc-bench-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  font-size: 17px;
+}
+
+.sc-bench-line span {
+  font-weight: 650;
+  color: var(--ag-ink-2);
+}
+
+.sc-bench-line b {
+  font-size: 26px;
+  font-weight: 720;
+  letter-spacing: -0.03em;
+}
+
+.sc-band {
+  margin-left: auto;
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--ag-good);
+  background: rgba(63, 106, 82, 0.12);
+}
+
+.sc-band.wellBelow,
+.sc-band.wellAbove {
+  color: var(--ag-bad);
+  background: rgba(143, 42, 28, 0.1);
+}
+
+.sc-band.below {
+  color: #8a5c0c;
+  background: rgba(168, 116, 26, 0.14);
+}
+
+.sc-gauge {
+  position: relative;
+  margin: 8px 0 4px;
+}
+
+.sc-gauge-bar {
+  display: flex;
+  height: 14px;
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(23, 18, 15, 0.08);
+}
+
+.sc-gauge-bar i { display: block; height: 100%; }
+.sc-gauge-bar .wellBelow { background: rgba(143, 42, 28, 0.6); }
+.sc-gauge-bar .below { background: rgba(168, 116, 26, 0.6); }
+.sc-gauge-bar .near { background: var(--ag-good); }
+.sc-gauge-bar .above { background: rgba(63, 106, 82, 0.5); }
+.sc-gauge-bar .wellAbove { background: rgba(143, 42, 28, 0.6); }
+
+.sc-gauge-ref,
+.sc-gauge-mark {
+  position: absolute;
+  top: 50%;
+  translate: -50% -50%;
+  pointer-events: none;
+}
+
+.sc-gauge-ref {
+  width: 2px;
+  height: 24px;
+  background: #17120f;
+  opacity: 0.5;
+}
+
+.sc-gauge-mark {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f6d49b, var(--ag-gold) 55%, #b58b52);
+  box-shadow: 0 0 0 3px #fbf7f0, 0 3px 8px rgba(40, 20, 6, 0.4);
+}
+
+/* ---------- Message reader ---------- */
+
+.sc-page .ag-field textarea.sc-msg {
+  min-height: 210px;
+  font-size: 18px;
+  color: #17120f;
+  background: rgba(255, 253, 249, 0.85);
+}
+
+.sc-private {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ag-good);
+}
+
+.sc-private svg {
+  flex: none;
+}
+
+.sc-empty {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--ag-ink-2);
+}
+
+.sc-page .sc-terms {
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+.sc-page .ag-term {
+  padding: 14px;
+  background: rgba(255, 252, 246, 0.6);
+}
+
+.sc-page .ag-term dt {
+  font-size: 12.5px;
+}
+
+.sc-page .ag-term dd {
+  font-size: 17px;
+  overflow-wrap: anywhere;
+}
+
+.sc-page .sc-cta {
+  min-height: 58px;
+  font-size: 18px;
+}
+
+/* The four signs that matter most, as icons. */
+.sc-strip {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.sc-strip li,
+.sc-strip a {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 10px;
+  text-align: center;
+  font-size: 15.5px;
+  font-weight: 640;
+  line-height: 1.25;
+  color: #17120f;
+}
+
+.sc-strip li {
+  padding: 16px 10px;
+  border-radius: 20px;
+  background: var(--sc-glass);
+  border: 1px solid var(--sc-glass-edge);
+  -webkit-backdrop-filter: saturate(160%) blur(20px);
+  backdrop-filter: saturate(160%) blur(20px);
+}
+
+.sc-strip a {
+  text-decoration: none;
+}
+
+.sc-strip-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  font-weight: 800;
+  color: #fff;
+  background: radial-gradient(circle at 35% 30%, #c4574a, var(--ag-bad) 62%, #5e1a10);
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.22);
+}
+
+.sc-strip-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.sc-strip .sc-strip-call {
+  background: rgba(23, 18, 15, 0.88);
+}
+
+.sc-strip .sc-strip-call a {
+  color: var(--cream);
+}
+
+.sc-strip-call .sc-strip-icon {
+  background: radial-gradient(circle at 35% 30%, #e19a62, var(--ag-clay) 55%, var(--ag-clay-deep));
+}
