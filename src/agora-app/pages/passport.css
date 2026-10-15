@@ -1,0 +1,887 @@
+/* Β · Hephaestus — the work passport. Glass tablets over the cream slip,
+   big type, few words; the bronze and clay do the showing. */
+
+.pp-page {
+  --pp-glass: rgba(251, 247, 240, 0.62);
+  --pp-glass-edge: rgba(255, 255, 255, 0.55);
+  font-size: 17px;
+  color: var(--ag-ink);
+}
+
+.pp-page .ag-tablet {
+  padding: clamp(20px, 3vw, 32px);
+  background: var(--pp-glass);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid var(--pp-glass-edge);
+  box-shadow: var(--ag-shadow);
+}
+
+.pp-page .ag-tablet + .ag-tablet {
+  margin-top: 0;
+}
+
+.pp-page .ag-list {
+  background: rgba(251, 247, 240, 0.72);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-color: var(--pp-glass-edge);
+}
+
+.pp-page .ag-muted,
+.pp-page .tool-note {
+  color: var(--ag-ink-2);
+  font-size: 16px;
+}
+
+.pp-page .save-status {
+  color: var(--ag-ink);
+  font-size: 15px;
+  border-left: 0;
+  border-radius: 12px;
+}
+
+.pp-page .ag-lede {
+  color: var(--ag-ink);
+}
+
+.pp-page .ag-section-nav {
+  margin-bottom: 26px;
+}
+
+.pp-note {
+  font-size: 16px;
+}
+
+/* ---------- Big type and big targets ---------- */
+
+.pp-step-title {
+  font-size: clamp(28px, 3.4vw, 34px);
+  font-weight: 720;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  outline: none;
+}
+
+.pp-step-title small {
+  margin-left: 8px;
+  font-size: 17px;
+  font-weight: 560;
+  letter-spacing: 0;
+  color: var(--ag-ink-2);
+}
+
+.pp-step-count {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ag-clay-deep);
+}
+
+.pp-step-line {
+  margin-top: 4px;
+  font-size: 18px;
+  color: var(--ag-ink-2);
+}
+
+.pp-step-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pp-step-coin.ag-coin.lg {
+  width: 64px;
+  height: 64px;
+}
+
+.pp-step-coin.ag-coin.lg svg {
+  width: 32px;
+  height: 32px;
+}
+
+.pp-big-btn.ag-btn {
+  min-height: 58px;
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 1.2;
+  white-space: normal;
+  text-align: center;
+}
+
+.pp-big-btn.ag-btn svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+}
+
+.pp-page .listen.pp-big-btn {
+  height: auto;
+  width: 100%;
+  align-self: stretch;
+  justify-content: center;
+}
+
+.pp-head-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.pp-confirm {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.pp-confirm-block {
+  display: flex;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(143, 42, 28, 0.08);
+}
+
+/* ---------- The builder ---------- */
+
+.pp-builder {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+  gap: 22px;
+  align-items: start;
+}
+
+.pp-builder.is-final {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.pp-builder.is-final .pp-aside {
+  display: none;
+}
+
+.pp-step {
+  scroll-margin-top: calc(var(--ag-bar-h) + 76px);
+}
+
+.pp-page .pp-aside {
+  position: sticky;
+  top: calc(var(--ag-bar-h) + 78px);
+  padding: 12px;
+}
+
+@media (max-width: 980px) {
+  .pp-builder {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pp-aside {
+    display: none;
+  }
+}
+
+.pp-step-body {
+  margin-top: 26px;
+}
+
+.pp-step-error {
+  margin-top: 18px;
+}
+
+.pp-step-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.pp-step-foot .pp-big-btn {
+  min-width: 140px;
+}
+
+.pp-step-foot .ag-btn-primary {
+  margin-left: auto;
+}
+
+.pp-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 16px 36px -20px rgba(40, 20, 6, 0.7);
+}
+
+.pp-canvas-lg {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+/* Trade: the tool turns in its niche above the plates. */
+.pp-trade {
+  display: grid;
+  gap: 18px;
+}
+
+.ag-niche.pp-tool-niche {
+  height: 240px;
+}
+
+.pp-trade-tiles {
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+}
+
+.pp-trade-tiles .ag-tile {
+  min-height: 140px;
+  font-size: 17px;
+}
+
+.pp-trade-tiles .ag-tile small {
+  font-size: 14px;
+  color: var(--ag-ink-2);
+}
+
+.pp-trade-tiles .ag-tile-art {
+  width: 72px;
+  height: 72px;
+}
+
+@media (min-width: 1100px) {
+  .pp-trade {
+    grid-template-columns: minmax(0, 1fr) 260px;
+  }
+
+  .pp-trade .pp-tool-niche {
+    order: 2;
+    height: 100%;
+    min-height: 320px;
+  }
+}
+
+/* Chips with a second script underneath. */
+.pp-chips {
+  gap: 10px;
+}
+
+.pp-chip.ag-chip {
+  min-height: 56px;
+  padding: 8px 18px;
+  border-radius: 18px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ag-ink);
+  text-align: left;
+}
+
+.pp-chip span {
+  display: grid;
+  line-height: 1.2;
+}
+
+.pp-chip small {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ag-ink-2);
+}
+
+.pp-chip[aria-pressed='true'] {
+  color: #fff8ee;
+}
+
+.pp-chip[aria-pressed='true'] small {
+  color: rgba(255, 248, 238, 0.8);
+}
+
+/* Fields */
+.pp-fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.pp-fieldset legend {
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+.pp-big-field > span:first-child,
+.pp-big-field > .ag-label,
+.pp-fieldset legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ag-ink);
+}
+
+.pp-page .ag-field.pp-big-field input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='file']),
+.pp-page .ag-field.pp-big-field select,
+.pp-page .pp-big-field .ag-input {
+  min-height: 58px;
+  font-size: 18px;
+}
+
+.pp-rupee {
+  position: relative;
+  display: block;
+}
+
+.pp-rupee b {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  translate: 0 -50%;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ag-ink-2);
+  pointer-events: none;
+}
+
+.pp-page .ag-field .pp-rupee input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='file']) {
+  padding-left: 38px;
+}
+
+.pp-years {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.pp-years input[type='range'] {
+  flex: 1;
+  min-height: 44px;
+}
+
+.pp-years-out {
+  margin-left: 6px;
+  font-size: 28px;
+  font-weight: 750;
+  color: var(--ag-clay-deep);
+}
+
+.pp-round {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--ag-line-2);
+  background: var(--ag-tablet);
+  color: var(--ag-ink);
+}
+
+.pp-avail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  font-size: 19px;
+  font-weight: 650;
+  color: var(--ag-clay-deep);
+  background: rgba(198, 91, 43, 0.1);
+}
+
+.pp-avail svg {
+  flex: none;
+}
+
+/* Evidence */
+.pp-photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.pp-photo {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.pp-photo img,
+.pp-photo-missing {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 16px;
+  background: rgba(23, 18, 15, 0.06);
+  font-size: 15px;
+  color: var(--ag-ink-2);
+}
+
+.pp-add-photo {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 6px;
+  min-height: 120px;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  border: 2px dashed rgba(154, 60, 25, 0.45);
+  background: rgba(198, 91, 43, 0.07);
+  font-size: 17px;
+  font-weight: 650;
+  color: var(--ag-clay-deep);
+  cursor: pointer;
+}
+
+.pp-add-photo small {
+  font-weight: 500;
+  color: var(--ag-ink-2);
+}
+
+.pp-add-photo:focus-within {
+  outline: 3px solid color-mix(in srgb, var(--ag-clay) 70%, white);
+  outline-offset: 2px;
+}
+
+.pp-add-photo.is-off {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pp-undo {
+  margin-top: 4px;
+}
+
+.pp-sub {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* The shared voice recorder, restyled for the cream page. */
+.pp-voice {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(23, 18, 15, 0.045);
+}
+
+.pp-voice .tool-note {
+  margin: 8px 0 12px;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.pp-voice .btn {
+  height: auto;
+  min-height: 56px;
+  padding: 0 24px;
+  font-size: 17px;
+  font-weight: 650;
+}
+
+.pp-voice .btn-ghost {
+  color: #fff8ee;
+  background: linear-gradient(180deg, #3a2e27, var(--ag-ink) 70%);
+  box-shadow: none;
+}
+
+.pp-voice audio {
+  display: block;
+  width: 100%;
+  margin: 12px 0 6px;
+}
+
+.pp-voice .link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 16px;
+  color: var(--ag-clay-deep);
+}
+
+.pp-voice p[role='status'] {
+  margin-top: 8px;
+  font-size: 15px;
+  color: var(--ag-bad);
+}
+
+/* The finished card */
+.pp-final {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 12px;
+}
+
+.pp-jump .ag-chip {
+  min-height: 48px;
+  font-size: 16px;
+  color: var(--ag-ink);
+}
+
+/* ---------- Diary ---------- */
+
+.pp-stats .ag-stat b {
+  font-size: clamp(28px, 3vw, 36px);
+}
+
+.pp-stats .ag-stat span {
+  font-size: 15px;
+  color: var(--ag-ink-2);
+}
+
+.ag-niche.pp-shelf-niche {
+  height: 230px;
+}
+
+.pp-week {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.pp-week li {
+  display: grid;
+  gap: 2px;
+  padding: 8px 2px;
+  border-radius: 12px;
+  font-size: 14px;
+  background: rgba(23, 18, 15, 0.05);
+}
+
+.pp-week b {
+  font-size: 14px;
+}
+
+.pp-week li.paid {
+  color: var(--ag-clay-deep);
+  background: rgba(198, 91, 43, 0.16);
+}
+
+.pp-week li.unpaid {
+  color: var(--ag-bad);
+  background: rgba(143, 42, 28, 0.16);
+}
+
+.pp-laurel {
+  flex: none;
+  color: var(--ag-bronze);
+  vertical-align: -3px;
+}
+
+.pp-owed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.pp-page .pp-owed {
+  display: grid;
+  gap: 6px;
+}
+
+.pp-owed-who {
+  font-size: 20px;
+}
+
+.pp-owed-sum {
+  font-size: 40px;
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--ag-bad);
+}
+
+.pp-owed-days {
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: var(--ag-ink-2);
+}
+
+.pp-status {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.pp-status-btn {
+  --tone: var(--ag-ink);
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 6px;
+  min-height: 88px;
+  padding: 10px 6px;
+  border-radius: 18px;
+  border: 2px solid var(--ag-line-2);
+  background: var(--ag-tablet);
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--ag-ink);
+}
+
+.pp-status-btn.paid { --tone: var(--ag-good); }
+.pp-status-btn.unpaid { --tone: var(--ag-bad); }
+.pp-status-btn.part { --tone: #7a500a; }
+
+.pp-status-btn svg {
+  color: var(--tone);
+}
+
+.pp-status-btn[aria-pressed='true'] {
+  color: #fff;
+  background: var(--tone);
+  border-color: var(--tone);
+}
+
+.pp-status-btn[aria-pressed='true'] svg {
+  color: #fff;
+}
+
+.pp-part {
+  margin-top: 12px;
+}
+
+.pp-seg-big button {
+  min-height: 52px;
+  font-size: 16px;
+}
+
+.pp-empty {
+  display: grid;
+  justify-items: start;
+  gap: 14px;
+  font-size: 18px;
+}
+
+.pp-month {
+  display: grid;
+  gap: 10px;
+}
+
+.pp-month-head h3 {
+  font-size: 20px;
+  font-weight: 720;
+  letter-spacing: -0.02em;
+}
+
+.pp-month-head span {
+  font-size: 15px;
+  color: var(--ag-ink-2);
+}
+
+.pp-month-head b {
+  color: var(--ag-bad);
+}
+
+.pp-page .ag-list-row.pp-day {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 14px;
+  min-height: 72px;
+}
+
+.pp-day-date {
+  display: grid;
+  justify-items: center;
+  line-height: 1.05;
+}
+
+.pp-day-date b {
+  font-size: 26px;
+  font-weight: 750;
+}
+
+.pp-day-date small {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ag-ink-2);
+}
+
+.pp-day-main {
+  min-width: 0;
+}
+
+.pp-page .pp-day-main strong {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 17px;
+  overflow-wrap: anywhere;
+}
+
+.pp-page .pp-day-main small {
+  font-size: 15px;
+  color: var(--ag-ink-2);
+}
+
+.pp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.pp-badge.paid { color: var(--ag-good); background: rgba(63, 106, 82, 0.13); }
+.pp-badge.unpaid { color: var(--ag-bad); background: rgba(143, 42, 28, 0.12); }
+.pp-badge.part { color: #7a500a; background: rgba(168, 116, 26, 0.16); }
+
+@media (max-width: 520px) {
+  .pp-page .ag-list-row.pp-day {
+    grid-template-columns: 52px minmax(0, 1fr);
+  }
+
+  .pp-day .pp-badge {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .pp-day .ag-chev {
+    display: none;
+  }
+
+  .pp-status-btn {
+    min-height: 80px;
+    font-size: 16px;
+  }
+}
+
+/* ---------- Show to an employer: full screen, high contrast ---------- */
+
+html.pp-locked,
+html.pp-locked body {
+  overflow: hidden;
+}
+
+.pp-show {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  overflow: auto;
+  padding: max(20px, env(safe-area-inset-top)) clamp(18px, 5vw, 64px) calc(20px + env(safe-area-inset-bottom));
+  background: #0b0806;
+  color: #fff;
+  font-family: var(--font);
+}
+
+.pp-show-inner {
+  align-self: center;
+  display: grid;
+  gap: clamp(10px, 2vh, 22px);
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.pp-show-kicker {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #f2c27a;
+}
+
+.pp-show-name {
+  font-size: clamp(48px, 11vw, 132px);
+  font-weight: 780;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  overflow-wrap: anywhere;
+}
+
+.pp-show-trade {
+  font-size: clamp(24px, 4vw, 42px);
+  font-weight: 600;
+  color: #f2c27a;
+}
+
+.pp-show-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+}
+
+@media (min-width: 760px) {
+  .pp-show-body:has(.pp-show-photo) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    align-items: start;
+  }
+}
+
+.pp-show-photo {
+  width: 100%;
+  max-height: 46vh;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.pp-show-facts {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+}
+
+.pp-show-facts dt {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.pp-show-facts dd {
+  margin: 2px 0 0;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.pp-show-facts dd.pp-show-rate {
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 780;
+}
+
+.pp-show-note {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.pp-show-close {
+  position: sticky;
+  bottom: 0;
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: min(360px, 100%);
+  min-height: 64px;
+  margin-top: 18px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  color: #0b0806;
+  font-size: 22px;
+  font-weight: 750;
+}
+
+.pp-show-close:focus-visible {
+  outline: 4px solid #f2c27a;
+  outline-offset: 4px;
+}

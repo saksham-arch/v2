@@ -10,7 +10,7 @@ import {whenFonts} from '../gl/tex.js'
 import {hall} from '../vase/hall.js'
 import {SaveStatus,ClearDraft} from './common.jsx'
 const store=cardStore
-function Voice({blob,onDone}){
+export function Voice({blob,onDone}){
  const {t,lang}=useI18n(),[state,setState]=useState('idle'),[seconds,setSeconds]=useState(0),rec=useRef(),stream=useRef(),timer=useRef(),alive=useRef(true),url=useMemo(()=>blob?URL.createObjectURL(blob):null,[blob])
  useEffect(()=>()=>{if(url)URL.revokeObjectURL(url)},[url])
  useEffect(()=>{alive.current=true;return()=>{alive.current=false;clearInterval(timer.current);if(rec.current?.state==='recording')rec.current.stop();stream.current?.getTracks().forEach(t=>t.stop())}},[])
