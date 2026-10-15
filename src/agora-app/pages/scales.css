@@ -257,7 +257,6 @@
 /* ---------- The listing this what-if came from ---------- */
 
 .sc-page .sc-source {
-  border-left: 6px solid var(--c);
 }
 
 .sc-source > * + * {
@@ -295,7 +294,6 @@
 
 .sc-page .sc-verdict,
 .sc-page .sc-scan {
-  border-top: 6px solid var(--tone);
 }
 
 .sc-verdict:focus {
@@ -406,7 +404,6 @@
 
 .sc-honest {
   padding-left: 14px;
-  border-left: 3px solid var(--ag-bronze);
   font-size: 16px;
   font-weight: 600;
   color: var(--ag-ink-2);
