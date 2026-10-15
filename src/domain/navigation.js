@@ -1,4 +1,4 @@
-export const DESTINATIONS={work:'#work',craft:'#craft',trust:'#trust',rights:'#rights',map:'#map'}
+export const DESTINATIONS={work:'#work',craft:'#craft',trust:'#trust',rights:'#rights',map:'#map',scales:'#scales',passport:'#passport',athena:'#athena'}
 export function navigate(key){
  const hash=DESTINATIONS[key]||'#top'
  if(location.hash!==hash)location.hash=hash

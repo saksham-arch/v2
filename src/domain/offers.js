@@ -5,8 +5,8 @@ export const offerStore=createLocalStore('offer',{offer:PRESETS.doubt,source:nul
 export function offerFromJob(j) {
  return {trade:j.trade,pay:String(j.pay),unit:j.unit,hours:j.hoursCount===null?null:String(j.hoursCount),payday:j.payday??'unknown',address:j.address===null?'unknown':j.address?'yes':'no',fee:j.fee===null?null:String(j.fee),written:j.written===null?'unknown':j.written?'yes':'no',verified:j.verification==='sample-history'?'yes':'unknown'}
 }
-export function checkJob(j) {
+export function checkJob(j, destination = 'trust') {
  const current=offerStore.getSnapshot().data
  if(current.source!==j.id) offerStore.set({offer:offerFromJob(j),source:j.id,preset:null})
- navigate('trust')
+ navigate(destination)
 }

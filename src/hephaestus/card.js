@@ -143,6 +143,15 @@ export function drawCard(c, s) {
   g.font = `italic 500 58px ${SERIF}`
   emboss(g, () => g.fillText(`${s.tradeLabel || 'Your trade'}${s.years ? ` · ${s.years} ${s.years === 1 ? 'year' : 'years'}` : ''}`, 112, 410), '#f0cf98')
 
+  // When and where to find them, and the rate they ask.
+  const avail = [s.avail, s.rate ? `₹${Number(s.rate).toLocaleString('en-IN')} / day` : null].filter(Boolean).join('  ·  ')
+  if (avail) {
+    g.font = `600 27px ${SANS}`
+    let w = 27
+    while (g.measureText(avail).width > 860 && w > 16) g.font = `600 ${--w}px ${SANS}`
+    emboss(g, () => g.fillText(avail, 114, 458), 'rgba(246,223,178,0.92)')
+  }
+
   g.font = `600 22px ${SANS}`
   emboss(g, () => g.fillText('SKILLS', 112, 500), 'rgba(246,223,178,0.7)')
   g.font = `500 40px ${SERIF}`
@@ -179,7 +188,8 @@ export function drawCard(c, s) {
   // Seal: how this record was made.
   g.textAlign = 'center'
   g.font = `600 24px ${SANS}`
-  const lines = ['SELF-DESCRIBED SKILL', `${s.photos.length} PHOTO${s.photos.length === 1 ? '' : 'S'} OF WORK`, 'NO VERIFIED ENDORSEMENTS']
+  const record = s.days ? `${s.days} DAY${s.days === 1 ? '' : 'S'} SELF-RECORDED` : 'NO VERIFIED ENDORSEMENTS'
+  const lines = ['SELF-DESCRIBED SKILL', `${s.photos.length} PHOTO${s.photos.length === 1 ? '' : 'S'} OF WORK`, s.confirmed ? `${s.confirmed} CONFIRMED ON ERGON` : record]
   lines.forEach((l, i) => emboss(g, () => spaced(g, l, 1230, 740 + i * 44, 1), 'rgba(246,223,178,0.8)'))
   g.font = `italic 500 24px ${SERIF}`
   emboss(g, () => g.fillText(s.forged ? `Set in bronze · ${new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}` : 'Still on the anvil', 1230, 916), '#f0cf98')

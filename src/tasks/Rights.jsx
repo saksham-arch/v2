@@ -1,12 +1,12 @@
 import {useState} from 'react'
-import {createLocalStore,useStore,isObject,isText} from '../domain/storage.js'
+import {useStore} from '../domain/storage.js'
+import {rightsStore} from '../domain/rights.js'
 import {matchSchemes,numeric} from '../themis/rules.js'
 import {useI18n} from '../i18n/index.jsx'
 import {money} from '../hermes/jobs.js'
 import {SaveStatus,ClearDraft} from './common.jsx'
 import Listen from '../ui/Listen.jsx'
-const defaults={age:34,work:'construction',income:'low',aadhaar:'unknown',bank:'unknown',coverage:'unknown',employer:'',days:'',rate:'',draft:'',ready:false}
-const store=createLocalStore('rights',defaults,x=>isObject(x)&&isText(x.employer,120)&&isText(x.draft,12000)&&Number(x.age)>=14&&Number(x.age)<=75&&['construction','vending','domestic','other'].includes(x.work)&&['low','high'].includes(x.income)&&['aadhaar','bank','coverage'].every(k=>['yes','no','unknown'].includes(x[k]))&&['days','rate'].every(k=>isText(x[k],20)))
+const store=rightsStore
 export default function Rights({initialMode='schemes'}){
  const {t,lang}=useI18n(),[a,set,status]=useStore(store),[mode,setMode]=useState(initialMode),[attempt,setAttempt]=useState(false),say=(en,hi)=>lang==='hi'?hi:en
  const edit=(key,value)=>set(s=>({...s,[key]:value,ready:false}))
