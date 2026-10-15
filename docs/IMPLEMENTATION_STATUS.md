@@ -1,3 +1,5 @@
+> **Superseded (v2, 15 October 2026).** This document describes the v1 audit scope. v2 deliberately adds the posting/booking flows, work diary, message reader, naka boards and rights desk described in the README.
+
 # Ergon implementation and verification ledger
 
 Active scope: all IDs in EXISTING_FEATURE_IMPROVEMENT_PLAN.md, plus the user's request to preserve the existing Greek world, use reference artwork, repair vase picking and all controls, lower rendering cost, run on a distinct port, and investigate/integrate compatible work from the remote 3D-world branch.

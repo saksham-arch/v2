@@ -1,3 +1,5 @@
+> **Superseded (v2, 15 October 2026).** This document describes the v1 audit scope. v2 deliberately adds the posting/booking flows, work diary, message reader, naka boards and rights desk described in the README.
+
 # Ergon: existing-feature improvement specification
 
 Status: proposed, not implemented. Prepared 15 October 2026 against commit `e487d6e`.

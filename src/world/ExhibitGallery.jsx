@@ -5,6 +5,7 @@ import Balance from '../vase/exhibits/Balance.jsx'
 import Caduceus from '../vase/exhibits/Caduceus.jsx'
 import Tablet from '../vase/exhibits/Tablet.jsx'
 import Owl from '../vase/exhibits/Owl.jsx'
+import { NakaExhibit, ToolRing } from './AgoraExhibits.jsx'
 import FrameBudget from '../ui/FrameBudget.jsx'
 import SceneBoundary from '../ui/SceneBoundary.jsx'
 import { useI18n } from '../i18n/index.jsx'
@@ -17,6 +18,8 @@ const exhibits=[
  {id:'craft',name:'Hephaestus',hi:'हेफ़ेस्टस',label:'Show your skill',labelHi:'अपना हुनर दिखाएँ',object:'The bronze work tablet',objectHi:'काँसे का काम कार्ड',body:'Make your work visible. Your name, chosen skills and work photos become the face of this bronze tablet. Your work card lives in the vase above.',bodyHi:'इस काँसे की पट्टिका पर आपका नाम, हुनर और काम की तस्वीरें दिखती हैं। अपना काम कार्ड ऊपर के कलश में बनाएँ।',Component:Tablet,art:'hephaestus'},
  {id:'trust',name:'Themis',hi:'थीमिस',label:'Check an offer',labelHi:'प्रस्ताव जाँचें',object:'The balance of fair work',objectHi:'काम की शर्तों का तराज़ू',body:'Clear terms weigh against missing details and fees. The scale reflects the offer checked in the vase above.',bodyHi:'यह तराज़ू ऊपर के कलश में जाँचे गए प्रस्ताव की साफ़ शर्तों और गुम जानकारी को दिखाता है।',Component:Balance,art:'themis'},
  {id:'rights',name:'Athena',hi:'एथेना',label:'Know your rights',labelHi:'अपने हक़ जानें',object:'The owl and the rights scroll',objectHi:'उल्लू और अधिकारों का पत्र',body:'Keep the next step close. The owl guards the rights and wage-support tools in the vase above.',bodyHi:'उल्लू अधिकारों और मज़दूरी की सहायता का प्रतीक है। ये साधन ऊपर के कलश में उपलब्ध हैं।',Component:Owl,art:'athena'},
+ {id:'naka',name:'The naka',hi:'नाका',label:'Where hiring happens',labelHi:'जहाँ काम मिलता है',object:'The stoa of the waiting',objectHi:'इंतज़ार करने वालों का मंडप',body:'Every morning people wait at the corner with their tools at their feet. Ergon starts there: each naka has its own board of nearby work, read aloud in big type.',bodyHi:'हर सुबह लोग अपने औज़ार पैरों के पास रखकर नाके पर इंतज़ार करते हैं। एर्गोन वहीं से शुरू होता है: हर नाके का अपना बड़ा, बोलकर पढ़ा जाने वाला काम का बोर्ड है।',Component:NakaExhibit,art:'hermes'},
+ {id:'tools',name:'Eight trades',hi:'आठ पेशे',label:'Tools of every trade',labelHi:'हर पेशे के औज़ार',object:'Votive tools in bronze',objectHi:'काँसे के औज़ार',body:'The trowel, the roller, the tester, the wrench, the hammer, the tagari, the broom and the crate. Pick yours and it becomes the face of your work passport.',bodyHi:'करणी, रोलर, टेस्टर, रिंच, हथौड़ा, तगारी, झाड़ू और क्रेट। अपना चुनें, वही आपके काम पासपोर्ट का चेहरा बनता है।',Component:ToolRing,art:'hephaestus'},
 ]
 export default function ExhibitGallery() {
  const {lang}=useI18n(),[index,setIndex]=useState(2),[active,setActive]=useState(false),[loaded,setLoaded]=useState(false),[reduced,setReduced]=useState(()=>matchMedia('(prefers-reduced-motion: reduce)').matches),section=useRef()
@@ -24,7 +27,7 @@ export default function ExhibitGallery() {
  const item=exhibits[index],Model=item.Component,hi=lang==='hi'
  useEffect(()=>{const query=matchMedia('(prefers-reduced-motion: reduce)'),change=()=>setReduced(query.matches);query.addEventListener('change',change);const observer=new IntersectionObserver(([entry])=>{setActive(entry.isIntersecting);if(entry.isIntersecting)setLoaded(true)},{rootMargin:'180px'});observer.observe(section.current);return()=>{query.removeEventListener('change',change);observer.disconnect()}},[])
  return <section id="tools" ref={section} className="exhibit-gallery" aria-label={hi?'काम के चार साथी':'Four companions for work'}>
- <div className="exhibit-choices" role="group" aria-label={hi?'3D वस्तु चुनें':'Choose a 3D exhibit'}>{exhibits.map((e,i)=><button key={e.id} onClick={()=>setIndex(i)} aria-pressed={index===i}><span className="exhibit-numeral">{['Α','Β','Γ','Δ'][i]}</span><span><strong>{hi?e.labelHi:e.label}</strong><small>{hi?e.hi:e.name}</small></span></button>)}</div>
+ <div className="exhibit-choices" role="group" aria-label={hi?'3D वस्तु चुनें':'Choose a 3D exhibit'}>{exhibits.map((e,i)=><button key={e.id} onClick={()=>setIndex(i)} aria-pressed={index===i}><span className="exhibit-numeral">{['Α','Β','Γ','Δ','Ε','Ϛ'][i]}</span><span><strong>{hi?e.labelHi:e.label}</strong><small>{hi?e.hi:e.name}</small></span></button>)}</div>
  <div className="exhibit-display">
  <div className="exhibit-model" role="img" aria-label={`${hi?item.objectHi:item.object} · ${hi?'घुमाने के लिए खींचें':'Drag to turn the 3D sculpture'}`}>
  <SceneBoundary key={item.id} fallback={<img className="exhibit-fallback" src={`/art/gods/${item.art}.jpg`} alt={hi?item.objectHi:item.object}/>}>
@@ -37,8 +40,8 @@ export default function ExhibitGallery() {
  </Canvas>}
  </SceneBoundary><span className="exhibit-turn">{hi?'खींचकर घुमाएँ':'Drag to turn'} ↔</span>
  </div>
- <div className="exhibit-copy"><p className="exhibit-god">{hi?item.hi:item.name} · {['Α','Β','Γ','Δ'][index]}</p><h3>{hi?item.objectHi:item.object}</h3><p>{hi?item.bodyHi:item.body}</p>
- <a className="btn btn-clay btn-sm exhibit-open" href={['#map','#passport','#scales','#athena'][index]}>{hi?['काम खोजें','काम पासपोर्ट खोलें','प्रस्ताव जाँचें','हक़ और मदद'][index]:['Find work','Open your work passport','Check an offer','Rights & help'][index]} →</a>
+ <div className="exhibit-copy"><p className="exhibit-god">{hi?item.hi:item.name} · {['Α','Β','Γ','Δ','Ε','Ϛ'][index]}</p><h3>{hi?item.objectHi:item.object}</h3><p>{hi?item.bodyHi:item.body}</p>
+ <a className="btn btn-clay btn-sm exhibit-open" href={['#map','#passport','#scales','#athena','#naka/naka-marol','#passport/card'][index]}>{hi?['काम खोजें','काम पासपोर्ट खोलें','प्रस्ताव जाँचें','हक़ और मदद','मरोल नाका बोर्ड','अपना पेशा चुनें'][index]:['Find work','Open your work passport','Check an offer','Rights & help','Open the Marol Naka board','Choose your trade'][index]} →</a>
  <p className="exhibit-caption">{hi?'काँसा · संगमरमर · काँच':'BRONZE · MARBLE · GLASS'}</p></div>
  </div>
 
