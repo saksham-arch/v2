@@ -28,13 +28,13 @@ npm run build
 
 | Route | Keeper | What a worker can do |
 |---|---|---|
-| `#map` | Α Hermes | Find work on a pitched 3D city, where glass flowers are jobs and stoas are nakas. Filter by trade, day, distance and public or private work, and count distance from your naka. Every listing has a **trust seal** (Clear terms / Ask first / Warning), icon-first terms, explained red flags, questions to ask (sent on WhatsApp by you), sample payment reports, save, a 30-minute local hold, report, listen and share. |
-| `#naka/<id>` | Α Hermes | A big-type board for one naka: today's jobs picked up nearby, peak hours and amenities, read-aloud, local check-in, safety tiles and a printable poster. |
-| `#passport` | Β Hephaestus | A guided **work passport** covering trade, skills, experience, languages, availability, your naka, rate, photos and a voice intro. It is drawn on a bronze tablet and downloads as a PNG. The **work diary** records days worked, paid or unpaid, on an amphora shelf, and unpaid days become a wage reminder. You can share the card as text, or show it full-screen to a contractor. |
-| `#scales` | Γ Themis | Weigh an offer on the live 3D balance. **Read a forwarded job message** to pull out the pay, fee, hours and warning signs. Browse the warning signs, and make a bilingual **terms slip** both sides can keep. |
-| `#athena` | Δ Athena | Possibly relevant **schemes**, each showing why, what papers it needs and where to go. A **document pouch** shows readiness. **Money owed** builds a reminder from your diary. **Complaint steps** go from a written reminder up to the labour office, Samadhan and legal aid. **Helplines** are tap-to-call. |
-| `#post-work` | Hermes' herald | Employers post work through a three-step flow with a live listing preview and Themis' seal. Posting requires a fair-work commitment. |
-| `#book-work/<id>` · `#profiles` | — | Workers request work and follow a status timeline. Employers accept, decline or complete requests. Completed work adds an employer-confirmed day to the worker's diary, and the worker can say whether pay arrived on time. |
+| `#map` | Α Hermes | A full-screen 3D city where glass flowers are jobs and stoas are nakas. Filters sit in a glass bar along the top: trade, day, distance, private or public work, distance from your naka, and hide warnings. Each job shows pay, start, hours, payday, distance and a **trust seal** (Clear terms / Ask first / Warning), its most serious red flag, and three actions: weigh it, save it, listen. |
+| `#naka/<id>` | Α Hermes | A big-type board for one naka: the stoa, peak hours, people waiting, amenities, the work picked up nearby, read-aloud, "I am here today" and a printable board. |
+| `#passport` | Β Hephaestus | **Card**: a seven-step, icon-first builder over the live bronze tablet that ends in a PNG, a full-screen "show to employer" view and WhatsApp. **Diary**: days worked, paid or unpaid, shown on an amphora shelf. Money owed goes straight to Athena. |
+| `#scales` | Γ Themis | **Check an offer** on the live 3D balance. **Read a message**: paste a forwarded job message to pull out the pay, fee, hours and warning signs. |
+| `#athena` | Δ Athena | **Schemes**: possibly relevant schemes with tap-to-mark papers. **Money owed**: a reminder built from your diary. **Get help**: complaint steps on the 3D temple stairs and tap-to-call helplines. |
+| `#post-work` | Hermes' herald | Employers post work in three steps, with a live listing preview, Themis' seal and a required fair-work commitment. |
+| `#book-work/<id>` · `#profiles` | — | Workers request work and follow its status. Employers accept, decline or complete it. Completed work adds an employer-confirmed day to the worker's diary. |
 
 ## Trust, honestly
 
